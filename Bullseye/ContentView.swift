@@ -15,7 +15,7 @@ struct ContentView: View {
     private var alertIsVisible = false
 
     @State
-    private var jokeButtonVisible = false
+    private var sliderValue = 50.0
 
     var body: some View {
         VStack {
@@ -26,14 +26,14 @@ struct ContentView: View {
                     .lineSpacing(4.0)
                     .font(.footnote)
 
-            Text("89")
+            Text(String(format: "%.0f", sliderValue))
                     .kerning(-1.0)
                     .font(.largeTitle)
                     .fontWeight(.black)
 
             HStack {
                 Text("1").bold().font(.headline).padding()
-                Slider(value: .constant(50.0), in:
+                Slider(value: $sliderValue, in:
                 0.1...100.0).accentColor(.red)
                 Text("100").bold().font(.headline)
                         .padding()
@@ -48,14 +48,6 @@ struct ContentView: View {
                         dismissButton: .default(Text("Cool beans, bro")))
             })
 
-            Button(action: {
-                jokeButtonVisible = true
-            }) {
-                Text("Knock Knock")
-            }.alert(isPresented: $jokeButtonVisible, content: {
-                Alert(title: Text("Who's there?"), message: Text("Impatient cow"),
-                        dismissButton: .default(Text("Moo!")))
-            })
         }
 
     }
