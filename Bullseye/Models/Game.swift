@@ -9,8 +9,12 @@ struct Game {
     var score = 0
     var round = 1
 
-
     func points(sliderValue: Int) -> Int {
-        999
+
+        if sliderValue >= target {
+            return 100 - (sliderValue - target)
+        } else {
+            return 100 - (target - sliderValue)
+        }
     }
 }
