@@ -26,7 +26,7 @@ struct ContentView: View {
                     .lineSpacing(4.0)
                     .font(.footnote)
 
-            Text(String(format: "%.0f", sliderValue))
+            Text(String(format: "%.0f", sliderValue.rounded()))
                     .kerning(-1.0)
                     .font(.largeTitle)
                     .fontWeight(.black)
