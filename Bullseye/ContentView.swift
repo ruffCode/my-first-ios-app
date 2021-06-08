@@ -14,6 +14,9 @@ struct ContentView: View {
     @State
     private var alertIsVisible = false
 
+    @State
+    private var jokeButtonVisible = false
+
     var body: some View {
         VStack {
             Text("🎯🎯🎯\nPUT THE BULLSEYE AS YOU CAN TO")
@@ -43,6 +46,15 @@ struct ContentView: View {
             }.alert(isPresented: $alertIsVisible, content: {
                 Alert(title: Text("Hola!"), message: Text("You're been alerted!"),
                         dismissButton: .default(Text("Cool beans, bro")))
+            })
+
+            Button(action: {
+                jokeButtonVisible = true
+            }) {
+                Text("Knock Knock")
+            }.alert(isPresented: $jokeButtonVisible, content: {
+                Alert(title: Text("Who's there?"), message: Text("Impatient cow"),
+                        dismissButton: .default(Text("Moo!")))
             })
         }
 
